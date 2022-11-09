@@ -1,6 +1,17 @@
 # VoxelMap
 
 ## Introduction
+
+## 使用velodyne跑通代码效果还不错
+
+<div align="center">
+    <img src="pics/123.png" width = 100% >
+    <font color=#a0a0a0 size=2>clins yq_data 效果图</font>
+</div>
+
+
+
+
 **VoxelMap** is an efficient and probabilistic adaptive(coarse-to-fine) voxel mapping method for 3D LiDAR. Unlike the point cloud map, VoxelMap uses planes as representation units. A scan of LiDAR data will generate or update the plane. Each plane contains its own plane parameters and uncertainties that need to be estimated. This repo shows how to integrate VoxelMap into a LiDAR odometry.
 
 <div align="center">
