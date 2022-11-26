@@ -481,24 +481,27 @@ void publish_odometry(const ros::Publisher &pubOdomAftMapped) {
   static tf::TransformBroadcaster br;
   tf::Transform transform;
   tf::Quaternion q;
-  // transform.setOrigin(
-  //     tf::Vector3(state.pos_end(0), state.pos_end(1), state.pos_end(2)));
-  // q.setW(geoQuat.w);
-  // q.setX(geoQuat.x);
-  // q.setY(geoQuat.y);
-  // q.setZ(geoQuat.z);
-  // transform.setRotation(q);
-    transform.setOrigin(tf::Vector3(odomAftMapped.pose.pose.position.x, \
-                                    odomAftMapped.pose.pose.position.y, \
-                                    odomAftMapped.pose.pose.position.z));
-    q.setW(odomAftMapped.pose.pose.orientation.w);
-    q.setX(odomAftMapped.pose.pose.orientation.x);
-    q.setY(odomAftMapped.pose.pose.orientation.y);
-    q.setZ(odomAftMapped.pose.pose.orientation.z);
-    transform.setRotation( q );
-
+  transform.setOrigin(
+      tf::Vector3(state.pos_end(0), state.pos_end(1), state.pos_end(2)));
+  q.setW(geoQuat.w);
+  q.setX(geoQuat.x);
+  q.setY(geoQuat.y);
+  q.setZ(geoQuat.z);
+  transform.setRotation(q);
+  std::cout << geoQuat.w << " _ " <<geoQuat.x <<  " _ " << geoQuat.y <<  " _ " << geoQuat.z <<  " _ " << state.pos_end(0) << " _ " <<state.pos_end(0) << " _ " <<state.pos_end(0) << std::endl;
+    // transform.setOrigin(tf::Vector3(odomAftMapped.pose.pose.position.x, \
+    //                                 odomAftMapped.pose.pose.position.y, \
+    //                                 odomAftMapped.pose.pose.position.z));
+    // q.setW(odomAftMapped.pose.pose.orientation.w);
+    // q.setX(odomAftMapped.pose.pose.orientation.x);
+    // q.setY(odomAftMapped.pose.pose.orientation.y);
+    // q.setZ(odomAftMapped.pose.pose.orientation.z);
+    // q.normalize();
+    // transform.setRotation( q );
+  std::cout << "-----------: " << std::endl;
   br.sendTransform(tf::StampedTransform(transform, odomAftMapped.header.stamp,
                                         "camera_init", "aft_mapped"));
+  std::cout << "********" << std::endl;
   pubOdomAftMapped.publish(odomAftMapped);
 }
 

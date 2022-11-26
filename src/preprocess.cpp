@@ -35,6 +35,10 @@ void Preprocess::process(const sensor_msgs::PointCloud2::ConstPtr &msg,
     velodyne_handler(msg);
     break;
 
+  case OUSTER64:
+    oust64_handler(msg);
+    break;
+
   default:
     printf("Error LiDAR Type");
     break;
@@ -132,7 +136,7 @@ void Preprocess::oust64_handler(const sensor_msgs::PointCloud2::ConstPtr &msg) {
     if (yaw_angle <= -180.0)
       yaw_angle += 360.0;
 
-    added_pt.curvature = pl_orig.points[i].t / 1e6;
+    added_pt.curvature = pl_orig.points[i].time / 1e6;
 
     pl_surf.points.push_back(added_pt);
   }

@@ -1,15 +1,15 @@
 common:
-    lid_topic:  "/velodyne_points"
+    # lid_topic:  "/velodyne_points"
     # imu_topic:  "/imu1/data"
 
-    # lid_topic:  "/os_cloud_node/points"
+    lid_topic:  "/os_cloud_node/points"
     imu_topic:  "/imu/data"
 
 preprocess:
-    lidar_type: 2                #1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for L515 LiDAR
+    lidar_type: 4                #1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for L515 LiDAR, 4 for ouster64
     scan_line: 32
     blind: 1
-    point_filter_num: 1
+    point_filter_num: 4
     calib_laser: false              # true for KITTI Odometry dataset
 
 mapping:
